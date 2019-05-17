@@ -259,6 +259,10 @@ public class QuorumCnxManager {
             closeSocket(sock);
             LOG.warn("Exception reading or writing challenge: " + e.toString());
             return false;
+        } catch (RuntimeException e) {
+            closeSocket(sock);
+            LOG.warn("Exception reading or writing challenge: " + e.toString());
+            return false;
         }
         
         //If wins the challenge, then close the new connection.
